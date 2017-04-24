@@ -31,39 +31,14 @@ then
   clearEmbeddedDatabaseSettings
 
   # print out properties for the correct DB
-  if [ "$2" = "P" ]
+  if [ "$2" = "NEXT" ]
   then
-    setDefaultCredentials
-    echo "sonar.jdbc.url=$P_JDBC_URL" >> $SONAR_PROPERTIES_FILE
+    echo "sonar.jdbc.username=laura" >> $SONAR_PROPERTIES_FILE
+    echo "sonar.jdbc.password=laura" >> $SONAR_PROPERTIES_FILE
+    echo "sonar.jdbc.url=jdbc:postgresql://doryondemanddb.internal.sonarsource.com/laura" >> $SONAR_PROPERTIES_FILE
   else
-    if [ "$2" = "M" ]
-    then
-      setDefaultCredentials
-      echo "sonar.jdbc.url=$M_JDBC_URL" >> $SONAR_PROPERTIES_FILE
-    else
-      if [ "$2" = "O" ]
-      then
-        # copy the driver if it does not exist
-        ORACLE_DRIVER="$SONAR_NEXT/extensions/jdbc-driver/oracle/ojdbc6-11.2.0.3.0.jar"
-        if [ ! -f "$ORACLE_DRIVER" ]
-        then
-          echo "Copying ORACLE driver"
-          cp $SOFTWARE_FOLDER/SonarQube/ojdbc6-11.2.0.3.0.jar $SONAR_CURRENT/extensions/jdbc-driver/oracle/
-        fi
-
-        setDefaultCredentials
-        echo "sonar.jdbc.url=$O_JDBC_URL" >> $SONAR_PROPERTIES_FILE
-      else
-        if [ "$2" = "MS" ]
-        then
-          setDefaultCredentials
-          echo "sonar.jdbc.url=$MS_JDBC_URL" >> $SONAR_PROPERTIES_FILE
-        else
-          echo "sonar.jdbc.url=$H_JDBC_URL" >> $SONAR_PROPERTIES_FILE
-          echo "sonar.embeddedDatabase.port=9092" >> $SONAR_PROPERTIES_FILE
-        fi
-      fi
-    fi
+    echo "sonar.jdbc.url=$H_JDBC_URL" >> $SONAR_PROPERTIES_FILE
+    echo "sonar.embeddedDatabase.port=9092" >> $SONAR_PROPERTIES_FILE
   fi
 fi
 

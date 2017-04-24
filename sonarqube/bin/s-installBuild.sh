@@ -33,7 +33,7 @@ rm $SOFTWARE_FOLDER/SonarQube/_TEMP_/sonarqube-$VERSION.zip
 
 # And start SonarQube
 echo "================================================="
-s-sonar.sh start
+s-sonar.sh start $1
 echo ""
 
 if [[ "$OSTYPE" =~ ^darwin ]]
