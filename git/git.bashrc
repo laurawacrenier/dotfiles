@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source $GIT_COMPLETION_PATH
-source $GIT_PROMPT_PATH
+#source $GIT_COMPLETION_PATH
+#source $GIT_PROMPT_PATH
 
 function __dotfiles_workdir() {
   local g="$(git rev-parse --git-dir 2>/dev/null)"
@@ -17,6 +17,6 @@ function __dotfiles_workdir() {
   fi
 }
 
-GIT_PS1_SHOWUPSTREAM="verbose"
+#GIT_PS1_SHOWUPSTREAM="verbose"
 #GIT_PS1_SHOWDIRTYSTATE=true
-PS1='\t \[\e[1;34m\]$(__dotfiles_workdir) \[\033[01;32m\]$(__git_ps1 "[%s] ")\[\e[1;34m\]\$ \[\e[0m\]'
+#PS1='\t \[\e[1;34m\]$(__dotfiles_workdir) \[\033[01;32m\]$(__git_ps1 "[%s] ")\[\e[1;34m\]\$ \[\e[0m\]'
